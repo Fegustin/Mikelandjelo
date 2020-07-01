@@ -26,12 +26,13 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     // Navigation component
-    def nav_version = "2.3.0-rc01"
+    def nav_version = "2.3.0"
 
     // Java language implementation
     implementation "androidx.navigation:navigation-fragment:$nav_version"
@@ -43,4 +44,20 @@ dependencies {
 
     // PhotoEditor
     implementation 'ja.burhanrashid52:photoeditor:1.0.0'
+
+    // Material Design
+    implementation 'com.google.android.material:material:1.1.0'
+
+
+//    // CameraX core library using the camera2 implementation
+//    def camerax_version = "1.0.0-beta06"
+//    // The following line is optional, as the core library is included indirectly by camera-camera2
+//    implementation "androidx.camera:camera-core:${camerax_version}"
+//    implementation "androidx.camera:camera-camera2:${camerax_version}"
+//    // If you want to additionally use the CameraX Lifecycle library
+//    implementation "androidx.camera:camera-lifecycle:${camerax_version}"
+//    // If you want to additionally use the CameraX View class
+//    implementation "androidx.camera:camera-view:1.0.0-alpha13"
+//    // If you want to additionally use the CameraX Extensions library
+//    implementation "androidx.camera:camera-extensions:1.0.0-alpha13"
 }
