@@ -30,20 +30,32 @@ public class PhotoEditorFragment extends Fragment {
         //View
         photoEditorView = root.findViewById(R.id.photoEditorView);
 
-        assert getArguments() != null;
-        PhotoEditorFragmentArgs args = PhotoEditorFragmentArgs.fromBundle(getArguments());
-        Uri imageUri = Uri.parse(args.getImage());
 
-        Bitmap selectedImage = null;
-        try {
-            InputStream imageStream = getActivity().getContentResolver().openInputStream(imageUri);
-            selectedImage = BitmapFactory.decodeStream(imageStream);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        photoEditorView.getSource().setImageBitmap(selectedImage);
+        photoEditorView.getSource().setImageBitmap(getImage());
 
         return root;
+    }
+
+    private Bitmap getImage() {
+        Bitmap selectedImage = null;
+
+        assert getArguments() != null;
+
+        PhotoEditorFragmentArgs args = PhotoEditorFragmentArgs.fromBundle(getArguments());
+
+        if (args.getImageGallery() != null) {
+            Uri imageUri = Uri.parse(args.getImageGallery());
+
+            try {
+                InputStream imageStream = requireActivity().getContentResolver().openInputStream(imageUri);
+                selectedImage = BitmapFactory.decodeStream(imageStream);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+            selectedImage = args.getImageCamera();
+        }
+
+        return selectedImage;
     }
 }

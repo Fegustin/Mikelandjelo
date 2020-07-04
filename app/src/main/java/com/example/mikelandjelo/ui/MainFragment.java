@@ -108,13 +108,15 @@ public class MainFragment extends Fragment {
 
                     }
                 } else {
-                    Toast.makeText(getActivity(), "Камера", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
 
         return root;
     }
+
+
 
     private void dialogGetPermission() {
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity());
@@ -147,7 +149,7 @@ public class MainFragment extends Fragment {
                     assert data != null;
                     final Uri imageUri = data.getData();
 
-                    MainFragmentDirections.ActionMainFragmentToPhotoEditorFragment action = MainFragmentDirections.actionMainFragmentToPhotoEditorFragment(imageUri.toString());
+                    MainFragmentDirections.ActionMainFragmentToPhotoEditorFragment action = MainFragmentDirections.actionMainFragmentToPhotoEditorFragment(imageUri.toString(), null);
                     Navigation.findNavController(requireView()).navigate(action);
                 }else {
                     Toast.makeText(getActivity(), "Нет изображения",Toast.LENGTH_LONG).show();
